@@ -1,6 +1,7 @@
 /**
  * Created by ligh on 2016/11/19.
  */
+"use strict";
 
 const request = require('request');
 const qs = require('querystring');
@@ -19,7 +20,7 @@ WXSDKAPI.requestWXOpenID = function (code) {
 
 
     // 请求参数
-    var params =
+    let params =
     {
         appid: WXSDKConfig.AppId,
         secret: WXSDKConfig.AppSecret,
@@ -28,7 +29,7 @@ WXSDKAPI.requestWXOpenID = function (code) {
     };
 
     // 请求选项
-    var options =
+    let options =
     {
         method: 'get',
         url: WXSDKConfig.URL.Access_Token + qs.stringify(params)
@@ -63,7 +64,7 @@ WXSDKAPI.requestUserInfo = function (query) {
     query = JSON.parse(query);
 
     // 请求参数
-    var params =
+    let params =
     {
         access_token: query['access_token'],
         openid: query['openid'],
@@ -71,9 +72,8 @@ WXSDKAPI.requestUserInfo = function (query) {
     };
 
 
-
     // 请求选项
-    const options =
+    let options =
     {
         method: 'get',
         url: WXSDKConfig.URL.User_Info+qs.stringify(params)
